@@ -14,7 +14,7 @@ public class GreetingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_greetings);
 
         RustGreetings g = new RustGreetings();
-        String r = g.sayHello("world");
+        String r = g.sayHello("K");
         ((TextView)findViewById(R.id.greetingField)).setText(r);
     }
 }
