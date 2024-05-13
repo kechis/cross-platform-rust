@@ -8,6 +8,7 @@ public class GreetingsActivity extends AppCompatActivity {
 
     static {
         System.loadLibrary("greetings");
+        System.loadLibrary("android");
     }
 
     @Override

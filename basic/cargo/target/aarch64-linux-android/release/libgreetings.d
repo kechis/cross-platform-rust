@@ -1,1 +1,0 @@
-/Users/frmi/GFT/Workspaces/Hybrid/cross-platform-rust/basic/cargo/target/aarch64-linux-android/release/libgreetings.a: /Users/frmi/GFT/Workspaces/Hybrid/cross-platform-rust/basic/cargo/src/lib.rs
