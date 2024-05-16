@@ -36,8 +36,15 @@ pub mod android {
     use self::jni::sys::{jstring};
 
     #[no_mangle]
-    pub unsafe extern fn Java_com_mozilla_greetings_RustGreetings_greeting(env: JNIEnv, _: JClass, java_pattern: JString) -> jstring {
-        let world = rust_greeting(env.get_string(java_pattern).expect("invalid pattern string").as_ptr());
+    // pub unsafe extern fn Java_com_mozilla_greetings_RustGreetings_greeting(env: JNIEnv, _: JClass, java_pattern: JString) -> jstring {
+    pub unsafe extern fn Java_com_mozilla_greetings_RustGreetings_greeting<'local>(mut env: JNIEnv<'local>,
+// This is the class that owns our static method. It's not going to be used,
+// but still must be present to match the expected signature of a static
+// native method.
+                                                     class: JClass<'local>,
+                                                     java_pattern: JString<'local>)
+                                                     -> jstring {
+        let world = rust_greeting(env.get_string(&java_pattern).expect("invalid pattern string").as_ptr());
         let output = env.new_string(CStr::from_ptr(world).to_str().unwrap()).expect("Couldn't create java string!");
         rust_greeting_free(world);
 
